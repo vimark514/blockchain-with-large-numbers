@@ -31,13 +31,15 @@ public class Main {
 
         long time = System.currentTimeMillis();
         BigInteger i = new BigInteger("0");
-        while (i.compareTo(keys) != 0){
+        BigInteger min = new BigInteger("0");
+        while (keys.compareTo(min) != 0){
             if(fullKey.equalsIgnoreCase(String.format("0x%x", i))){
                 time = System.currentTimeMillis() - time;
                 System.out.println("Your key: " + (String.format("0x%x", i)) + " was found for "
                         + time +" ms, " + i + " keys was checked");
                 return;
             }
+            keys = keys.subtract(BigInteger.ONE);
             i = i.add(BigInteger.ONE);
         }
     }
